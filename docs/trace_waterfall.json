@@ -3,27 +3,280 @@
     "step": 1,
     "query": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
     "action_type": "FINAL_ANSWER",
-    "thought": "Câu hỏi chung về quy chế học vụ, trả lời trực tiếp không cần gọi Tool.",
-    "output": "[Mock Agent Response]: Xin chào! Quy chế học vụ VinUni yêu cầu sinh viên tích lũy tối thiểu 120 tín chỉ và duy trì GPA trên 2.0 để tốt nghiệp.",
-    "latency_ms": 2845.93
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Quy chế học vụ cơ bản của Đại học VinUni bao gồm các nội dung chính sau:\n\n1. **Đăng ký và học tập**: Sinh viên cần tuân thủ quy định về đăng ký môn học, thời gian học, việc tham gia lớp học và quy định về chuyên ngành.\n\n2. **Điểm số**: Hệ thống đánh giá bao gồm các loại điểm như điểm thi, điểm kiểm tra, điểm bài tập và điểm khác. Điểm được tính theo thang điểm 4 và có quy định rõ ràng về cách tính điểm trung bình.\n\n3. **Tham gia và điểm danh**: Sinh viên phải tham gia đầy đủ các buổi học và thực hành. Việc điểm danh có thể ảnh hưởng đến điểm số cuối cùng.\n\n4. **Xét tốt nghiệp**: Điều kiện tốt nghiệp bao gồm việc hoàn thành đầy đủ các môn học và đạt được số tín chỉ tối thiểu theo chương trình đào tạo.\n\n5. **Kỷ luật**: Bộ quy tắc kỷ luật xác định các hành vi không được chấp nhận và các hình thức xử lý vi phạm.\n\n6. **Hỗ trợ học vụ**: Trường cung cấp dịch vụ tư vấn học vụ cho sinh viên để hỗ trợ họ trong quá trình học tập.\n\nNếu bạn cần thông tin chi tiết hơn về một nội dung cụ thể nào đó trong quy chế học vụ, hãy cho tôi biết!",
+    "latency_ms": 5339.83
   },
   {
     "step": 1,
     "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
     "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'academic_query' với tham số: {\"student_id\": \"SV2026001\"}",
     "tool_name": "academic_query",
     "arguments": {
       "student_id": "SV2026001"
     },
-    "observation": {},
-    "latency_ms": 799.12
+    "observation": {
+      "status": "SUCCESS",
+      "student_id": "SV2026001",
+      "data": {
+        "full_name": "Nguyễn Văn An",
+        "class": "AI-K4",
+        "gpa": 3.85,
+        "email": "an.nv@vinuni.edu.vn",
+        "status": "Đang học",
+        "advisor": "PGS.TS Nguyễn Văn A"
+      }
+    },
+    "llm_latency_ms": 1358.74,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 1358.74
   },
   {
     "step": 2,
     "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
     "action_type": "FINAL_ANSWER",
-    "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Chưa thể trả lời chi tiết do chưa nhận được dữ liệu từ MCP Server (hãy hoàn thành TODO 2.1).",
-    "latency_ms": 10.0
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Dưới đây là thông tin học vụ của sinh viên SV2026001:\n\n- **Họ và tên**: Nguyễn Văn An\n- **Lớp**: AI-K4\n- **Điểm GPA**: 3.85\n- **Email**: an.nv@vinuni.edu.vn\n- **Trạng thái**: Đang học\n- **Cố vấn học tập**: PGS.TS Nguyễn Văn A\n\nNếu bạn cần thêm thông tin nào khác, hãy cho tôi biết!",
+    "latency_ms": 2023.05
+  },
+  {
+    "step": 1,
+    "query": "Đặt lịch tư vấn học vụ cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'advisor_availability' với tham số: {\"advisor_name\": \"PGS.TS Nguyễn Văn A\", \"date\": \"15/09/2026\"}",
+    "tool_name": "advisor_availability",
+    "arguments": {
+      "advisor_name": "PGS.TS Nguyễn Văn A",
+      "date": "15/09/2026"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "advisor_name": "PGS.TS Nguyễn Văn A",
+      "date": "15/09/2026",
+      "available_slots": [
+        "09:00",
+        "14:00",
+        "16:00"
+      ],
+      "message": "Cố vấn PGS.TS Nguyễn Văn A còn 3 khung giờ trống vào ngày 15/09/2026."
+    },
+    "llm_latency_ms": 828.34,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 828.34
+  },
+  {
+    "step": 2,
+    "query": "Đặt lịch tư vấn học vụ cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'schedule_appointment' với tham số: {\"student_id\": \"SV2026001\", \"datetime_str\": \"14:00 15/09/2026\", \"advisor_name\": \"PGS.TS Nguyễn Văn A\"}",
+    "tool_name": "schedule_appointment",
+    "arguments": {
+      "student_id": "SV2026001",
+      "datetime_str": "14:00 15/09/2026",
+      "advisor_name": "PGS.TS Nguyễn Văn A"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "booking_id": "BK-SV2026001-15092026-1400",
+      "student_id": "SV2026001",
+      "datetime": "14:00 15/09/2026",
+      "advisor": "PGS.TS Nguyễn Văn A",
+      "message": "Đặt lịch thành công cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 15/09/2026."
+    },
+    "llm_latency_ms": 1470.5,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 1470.5
+  },
+  {
+    "step": 3,
+    "query": "Đặt lịch tư vấn học vụ cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Đã đặt lịch tư vấn học vụ thành công cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026. \n\nThông tin chi tiết:\n- **Mã sinh viên:** SV2026001\n- **Cố vấn học tập:** PGS.TS Nguyễn Văn A\n- **Thời gian:** 14:00 ngày 15/09/2026\n- **Mã đặt lịch:** BK-SV2026001-15092026-1400\n\nNếu bạn cần thêm thông tin hoặc hỗ trợ gì khác, hãy cho tôi biết!",
+    "latency_ms": 1454.81
+  },
+  {
+    "step": 1,
+    "query": "Hãy tra cứu cố vấn học tập của sinh viên SV2026002, sau đó đặt lịch tư vấn với cố vấn đó vào lúc 09:00 ngày 16/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'academic_query' với tham số: {\"student_id\": \"SV2026002\"}",
+    "tool_name": "academic_query",
+    "arguments": {
+      "student_id": "SV2026002"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "student_id": "SV2026002",
+      "data": {
+        "full_name": "Trần Thị Bình",
+        "class": "AI-K4",
+        "gpa": 3.6,
+        "email": "binh.tt@vinuni.edu.vn",
+        "status": "Đang học",
+        "advisor": "TS. Lê Thị B"
+      }
+    },
+    "llm_latency_ms": 807.73,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 807.73
+  },
+  {
+    "step": 2,
+    "query": "Hãy tra cứu cố vấn học tập của sinh viên SV2026002, sau đó đặt lịch tư vấn với cố vấn đó vào lúc 09:00 ngày 16/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'advisor_availability' với tham số: {\"advisor_name\": \"TS. Lê Thị B\", \"date\": \"16/09/2026\"}",
+    "tool_name": "advisor_availability",
+    "arguments": {
+      "advisor_name": "TS. Lê Thị B",
+      "date": "16/09/2026"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "advisor_name": "TS. Lê Thị B",
+      "date": "16/09/2026",
+      "available_slots": [
+        "09:00",
+        "14:30",
+        "16:30"
+      ],
+      "message": "Cố vấn TS. Lê Thị B còn 3 khung giờ trống vào ngày 16/09/2026."
+    },
+    "llm_latency_ms": 998.84,
+    "tool_latency_ms": 1.08,
+    "latency_ms": 999.92
+  },
+  {
+    "step": 3,
+    "query": "Hãy tra cứu cố vấn học tập của sinh viên SV2026002, sau đó đặt lịch tư vấn với cố vấn đó vào lúc 09:00 ngày 16/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'schedule_appointment' với tham số: {\"student_id\": \"SV2026002\", \"datetime_str\": \"09:00 16/09/2026\", \"advisor_name\": \"TS. Lê Thị B\"}",
+    "tool_name": "schedule_appointment",
+    "arguments": {
+      "student_id": "SV2026002",
+      "datetime_str": "09:00 16/09/2026",
+      "advisor_name": "TS. Lê Thị B"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "booking_id": "BK-SV2026002-16092026-0900",
+      "student_id": "SV2026002",
+      "datetime": "09:00 16/09/2026",
+      "advisor": "TS. Lê Thị B",
+      "message": "Đặt lịch thành công cho sinh viên SV2026002 với TS. Lê Thị B vào lúc 09:00 16/09/2026."
+    },
+    "llm_latency_ms": 951.81,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 951.81
+  },
+  {
+    "step": 4,
+    "query": "Hãy tra cứu cố vấn học tập của sinh viên SV2026002, sau đó đặt lịch tư vấn với cố vấn đó vào lúc 09:00 ngày 16/09/2026.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Cố vấn học tập của sinh viên SV2026002 (Trần Thị Bình) là TS. Lê Thị B. \n\nTôi đã đặt lịch tư vấn với TS. Lê Thị B cho sinh viên vào lúc 09:00 ngày 16/09/2026 thành công. \n\nThông tin chi tiết về cuộc hẹn:\n- **Mã sinh viên**: SV2026002\n- **Thời gian hẹn**: 09:00 ngày 16/09/2026\n- **Cố vấn**: TS. Lê Thị B\n- **Mã đặt lịch**: BK-SV2026002-16092026-0900\n\nNếu bạn cần thêm thông tin hoặc hỗ trợ khác, hãy cho tôi biết!",
+    "latency_ms": 1666.9
+  },
+  {
+    "step": 1,
+    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV9999999.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'academic_query' với tham số: {\"student_id\": \"SV9999999\"}",
+    "tool_name": "academic_query",
+    "arguments": {
+      "student_id": "SV9999999"
+    },
+    "observation": {
+      "status": "NOT_FOUND",
+      "message": "Không tìm thấy dữ liệu sinh viên có mã 'SV9999999'"
+    },
+    "llm_latency_ms": 1697.71,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 1697.71
+  },
+  {
+    "step": 2,
+    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV9999999.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Thông tin học vụ của sinh viên có mã \"SV9999999\" không tìm thấy trong hệ thống. Có thể mã sinh viên này không tồn tại hoặc đã bị nhập sai. Bạn có thể kiểm tra lại mã sinh viên và cung cấp mã chính xác hơn để tôi có thể giúp bạn.",
+    "latency_ms": 1459.66
+  },
+  {
+    "step": 1,
+    "query": "Hãy tra cứu lịch thi của sinh viên SV2026001.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'exam_schedule_query' với tham số: {\"student_id\": \"SV2026001\"}",
+    "tool_name": "exam_schedule_query",
+    "arguments": {
+      "student_id": "SV2026001"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "student_id": "SV2026001",
+      "exam_count": 2,
+      "exams": [
+        {
+          "course_code": "AI101",
+          "course_name": "Nhập môn Trí tuệ Nhân tạo",
+          "exam_date": "20/09/2026",
+          "start_time": "08:00",
+          "end_time": "10:00",
+          "room": "C201"
+        },
+        {
+          "course_code": "CS102",
+          "course_name": "Cấu trúc Dữ liệu và Giải thuật",
+          "exam_date": "23/09/2026",
+          "start_time": "13:30",
+          "end_time": "15:30",
+          "room": "C305"
+        }
+      ]
+    },
+    "llm_latency_ms": 929.97,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 929.97
+  },
+  {
+    "step": 2,
+    "query": "Hãy tra cứu lịch thi của sinh viên SV2026001.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Lịch thi của sinh viên SV2026001 như sau:\n\n1. **Môn học:** Nhập môn Trí tuệ Nhân tạo (AI101)\n   - **Ngày thi:** 20/09/2026\n   - **Thời gian:** 08:00 - 10:00\n   - **Phòng thi:** C201\n\n2. **Môn học:** Cấu trúc Dữ liệu và Giải thuật (CS102)\n   - **Ngày thi:** 23/09/2026\n   - **Thời gian:** 13:30 - 15:30\n   - **Phòng thi:** C305\n\nNếu bạn cần thêm thông tin gì khác, hãy cho tôi biết!",
+    "latency_ms": 2135.04
+  },
+  {
+    "step": 1,
+    "query": "Kiểm tra các khung giờ còn trống của cố vấn TS. Lê Thị B trong ngày 16/09/2026.",
+    "action_type": "TOOL_EXECUTION",
+    "thought": "OpenAI quyết định gọi công cụ 'advisor_availability' với tham số: {\"advisor_name\": \"TS. Lê Thị B\", \"date\": \"16/09/2026\"}",
+    "tool_name": "advisor_availability",
+    "arguments": {
+      "advisor_name": "TS. Lê Thị B",
+      "date": "16/09/2026"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "advisor_name": "TS. Lê Thị B",
+      "date": "16/09/2026",
+      "available_slots": [
+        "09:00",
+        "14:30",
+        "16:30"
+      ],
+      "message": "Cố vấn TS. Lê Thị B còn 3 khung giờ trống vào ngày 16/09/2026."
+    },
+    "llm_latency_ms": 896.56,
+    "tool_latency_ms": 0.0,
+    "latency_ms": 896.56
+  },
+  {
+    "step": 2,
+    "query": "Kiểm tra các khung giờ còn trống của cố vấn TS. Lê Thị B trong ngày 16/09/2026.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Cố vấn TS. Lê Thị B còn 3 khung giờ trống vào ngày 16/09/2026, bao gồm:\n\n- 09:00\n- 14:30\n- 16:30\n\nNếu bạn muốn đặt lịch hẹn với cố vấn trong một trong những khung giờ này, hãy cho tôi biết thời gian cụ thể mà bạn chọn!",
+    "latency_ms": 1158.19
   }
 ]
